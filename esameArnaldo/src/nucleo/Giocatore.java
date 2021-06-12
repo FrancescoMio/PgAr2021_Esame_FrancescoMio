@@ -26,13 +26,18 @@ public class Giocatore {
 	
 	private String nickName;
 	private ArrayList<Armata> armate;
-	
+	/**
+	 * creazione del giocatore
+	 * @param nickName
+	 * @param armata
+	 */
 	public Giocatore(String nickName, Armata armata) {
 		this.armate = new ArrayList<Armata>();
 		this.nickName = nickName;
 		armate.add(armata);
 	}
 	
+	//aggiunta di una nuova armata al giocatore
 	public void addArmataNuova(Mappa mappa) {
 		System.out.println(TERRITORI_DISPONIBILI);
 		ArrayList<Territorio> territoriDsiponibili = mappa.getTerritoriDisponibili();
@@ -56,6 +61,11 @@ public class Giocatore {
 		System.out.println(CREAZIONE_ARMATE_TERMINATA);
 	}
 	
+	/**
+	 * ritorna un'armata in base alla posizione
+	 * @param posizione
+	 * @return
+	 */
 	public Armata getArmata(String posizione) {
 		for(int i = 0; i < armate.size(); i++) {
 			if(armate.get(i).getPosizione().equalsIgnoreCase(posizione))
@@ -63,19 +73,31 @@ public class Giocatore {
 		}
 		return null;
 	}
-	
+	/**
+	 * ritorna il nick
+	 * @return
+	 */
 	public String getNickName() {
 		return nickName;
 	}
-
+/**
+ * setta il nick
+ * @param nickName
+ */
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-
+/**
+ * ritonra le armate 
+ * @return
+ */
 	public ArrayList<Armata> getArmate() {
 		return armate;
 	}
-
+/**
+ * setta le armate in base ad un'arrayList passato come parametro
+ * @param armate
+ */
 	public void setArmate(ArrayList<Armata> armate) {
 		this.armate = armate;
 	}

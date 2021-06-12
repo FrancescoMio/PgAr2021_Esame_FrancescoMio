@@ -25,20 +25,27 @@ public class InputOutput {
 	public static final String CREAZIONE_TERRITORIO_TERMINATA = "CREAZIONE TERRITORIO %d TERMINATA ";
 	public static final String PER_FORZA_TERRA = "DEVI INSERIRE COME TIPO PER FORZA TERRA! ";
 	
-
+	/**
+	 * creazione della mappa
+	 * @return
+	 */
 	public static Mappa creaMappa() {
 		Mappa mappa = new Mappa(creaTerritori());
 		return mappa;
 	}
 	
+	/**
+	 * creazione dei territori
+	 * @return
+	 */
 	public static ArrayList<Territorio> creaTerritori(){
-		int numeroTerritoriDaCreare = InputDati.leggiInteroConMinimo(QUANTI_TERRITORI, 2);
+		int numeroTerritoriDaCreare = InputDati.leggiInteroConMinimo(QUANTI_TERRITORI, 2);  //numero di territori da creare
 		ArrayList<Territorio> territori = new  ArrayList<>();
 		boolean almenoUnoDiTerra = false;
 		for(int i = 0; i < numeroTerritoriDaCreare; i++) {
 			boolean lunghezzaCodiceValida = false;
 			String nomeTerritorio = "";
-			while(!lunghezzaCodiceValida) {
+			while(!lunghezzaCodiceValida) {  //controlli sui nomi dei territori
 				nomeTerritorio = InputDati.leggiStringaNonVuota(INSERIMENTO_NOME_TERRITORIO);
 				if(nomeTerritorio.length() == 3)
 					lunghezzaCodiceValida = true;
@@ -47,8 +54,8 @@ public class InputOutput {
 			}
 			boolean tipoValido = false;
 			String tipoTerritorio = "";
-			while(!tipoValido) {
-				if(i == numeroTerritoriDaCreare-1 && almenoUnoDiTerra == false) {
+			while(!tipoValido) {  //controlli sui tipi di territori
+				if(i == numeroTerritoriDaCreare-1 && almenoUnoDiTerra == false) {  //se si sono creati solo territori di tipo mare allora verra forzata la richiesta di almeno un territorio terra
 					while(!almenoUnoDiTerra) {
 						tipoTerritorio = InputDati.leggiStringaNonVuota(INSERIMENTO_TIPO_TERRITORIO);
 						if(tipoTerritorio.equalsIgnoreCase("terra")) {
@@ -79,6 +86,11 @@ public class InputOutput {
 		return territori;
 	}
 	
+	/**
+	 * creazione del giocatore
+	 * @param mappa
+	 * @return
+	 */
 	public static Giocatore creaGiocatore(Mappa mappa) {
 		String nickName = InputDati.leggiStringaNonVuota(INSERIMENTO_NICKNAME);
 		Armata armata = creaArmata(mappa,nickName);
@@ -86,6 +98,12 @@ public class InputOutput {
 		return giocatoreCasa;
 	}
 	
+	/**
+	 * creazione dell'armaata del giocatore in modo da avere sulla mappa almeno un territorio con un'unità
+	 * @param mappa
+	 * @param nickName
+	 * @return
+	 */
 	public static Armata creaArmata(Mappa mappa, String nickName) {
 		//Character codice = InputDati.leggiChar(INSERIMENTO_NICKNAME);
 		System.out.println(TERRITORI_DISPONIBILI);
