@@ -15,7 +15,7 @@ public class Partita {
 	public final static String INIZIO_TURNO = "---INIZIO NUOVO TURNO---";
 	public final static String RICHIEDI_MOSSA = "INSERISCI UNA MOSSA NEL FORMATO: A <Territorio di partenza> <Territorio di destinazione> - oppure digita exit per terminare il turno : ";
 	public final static String TERMINAZIONE_MOSSE = "PER CONFERMARE LE MOSSE SCELTE DIGITARE EXIT";
-	public final static String PARTITA_CONCLUSA = "------PARTITA TERMINATA-------";
+	public final static String PARTITA_CONCLUSA = "-------PARTITA TERMINATA-------";
 	
 	
 	
